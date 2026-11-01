@@ -1,0 +1,58 @@
+# Payroll & Attendance Tools
+
+A small set of browser-based tools for working with Daily Time Report (DTR) and attendance files. Everything runs **in your own browser**. Files you open or drop into a tool are **not uploaded anywhere**.
+
+## What's included
+
+| File | What it does |
+|------|--------------|
+| `index.html` | All three tools in one page, with a tab for each. **Start here.** |
+| `in-out-report.html` | **IN and OUT Report.** Load the IN/OUT CSV (and optionally a Workshift CSV) to see each employee's IN and OUT per day. Can highlight days with no punches or incomplete logs. Print / Save as PDF, or Download Excel. |
+| `attendance-report.html` | **Attendance Report.** Drop one or more Daily Time Report PDFs to get Detail, Summary and Dashboard views. Download Excel (with Dashboard). |
+| `dtr-combine.html` | **DTR Combine.** Drop the PDF parts of a Daily Time Report. Rows are matched by EmpCode and date, then combined and exported as Excel or PDF. |
+| `samples/sample-daily-time-report-part1.pdf` | A practice file. Same layout as the real Daily Time Report (Part 1), but all names and employee codes are made up. |
+
+## Try it with the sample file
+
+1. Open `index.html` in Chrome, Edge or Firefox (double-click it).
+2. Click the **Attendance Report** tab.
+3. Drag `samples/sample-daily-time-report-part1.pdf` into the drop area.
+4. You should see 18 sample employees (ALPHA, BRAVO, CHARLIE ...). Use this to learn the buttons before using your real report.
+
+The sample has 7 pages and covers Oct 19 to Oct 25, 2026. The employee names (ALPHA, SAMPLE EMPLOYEE and so on) and codes (90001 and up) are fake, but the days, times and hours are copied from the real report, so the lates and absences in it are real patterns. The last page of the sample holds the grand total, recomputed for the 18 sample employees.
+
+## How to use each tool
+
+### Attendance Report
+1. Get the Daily Time Report PDF from Crystal Report Viewer (export it as PDF).
+2. Open the **Attendance Report** tab and drop the PDF in. If the report came in several PDF files, drop them all together.
+3. Tick the **Group** boxes for the officers. Anyone not in a ticked group is treated as RNF. Your ticks are remembered on that computer.
+4. Read the results in the **Detail**, **Summary** and **Dashboard** views.
+5. Click **Download Excel (with Dashboard)** to save the result.
+
+How lates are counted: late minutes are whole minutes after shift start (7:31:00 counts as 1 minute late; on time is up to 7:30:59 for a 730AM shift).
+
+### IN and OUT Report
+1. Export the Employees IN and OUT Report from Crystal Report Viewer as **CSV**.
+2. Open the **In & Out Report** tab and choose the IN/OUT CSV.
+3. Optional: also choose the Workshift CSV so shifts come from the schedule. Employees not found in the workshift file still show their IN and OUT from the punches.
+4. Use the checkboxes to show only days with no punches, or only incomplete logs (missing IN or OUT).
+5. Click **Print / Save as PDF** or **Download Excel**.
+
+### DTR Combine
+1. Use this when the Daily Time Report comes in two or more PDF parts (the columns don't fit one page). For example, Part 1 has hours and tardiness and Part 2 has the OT columns.
+2. Open the **DTR Combine** tab and drop in all the parts together (2, 3, 4 or more).
+3. Rows are matched by EmpCode and date. Column headings are read from the PDFs themselves, so they can change between periods.
+4. Check the **Totals check** and **Things to look at** notes, and the preview.
+5. Choose Excel options or PDF options (paper and margin), then click **Download Excel** or **Download PDF**. **Clear all** starts over.
+
+## Notes
+
+- An internet connection is needed the first time a page loads, because the Excel and PDF libraries are loaded online.
+- Do **not** upload real payroll or employee files to this repository. It should contain only the HTML files, the sample PDF and this README.
+- Check the totals and the notes in each tool before using the output for payroll.
+- If a PDF layout changes, the tool may need an update. Send a sample to whoever maintains it.
+
+## Updating
+
+To change a tool, replace the HTML file in this repository with the new version and commit. The site link stays the same.
